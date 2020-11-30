@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".form.MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="14dp"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <ImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/sew" />
+
+            <TextView
+                android:id="@+id/textView1"
+                android:textSize="16sp"
+                android:layout_marginBottom="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Data Sales"
+                android:textColor="#111D5E"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Kunjungan"
+                android:textColor="#546e7a"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/tgl_kunjungan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:clickable="true"
+                android:drawableStart="@drawable/ic_date"
+                android:focusable="true"
+                android:hint="29 Desember 2020"
+                android:textColor="#546e7a"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama Tempat"
+                android:textColor="#546e7a"/>
+
+            <EditText
+                android:id="@+id/tmp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="10dp"
+                android:background="@xml/input"
+                android:layout_marginBottom="10dp"
+                android:inputType="text"/>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kontak"
+                android:textColor="#546e7a"/>
+
+            <EditText
+                android:id="@+id/ktk"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="10dp"
+                android:background="@xml/input"
+                android:layout_marginBottom="10dp"
+                android:inputType="phone"/>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alamat"
+                android:textColor="#546e7a"/>
+
+            <EditText
+                android:id="@+id/almt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="30dp"
+                android:background="@xml/input"
+                android:layout_marginBottom="10dp"
+                android:inputType="text"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Area"
+                android:textColor="#546e7a"/>
+
+            <Spinner
+            android:id="@+id/area"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="40dp"/>
+
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pemilik"
+                android:textColor="#546e7a"/>
+
+            <EditText
+                android:id="@+id/pemilik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="10dp"
+                android:background="@xml/input"
+                android:layout_marginBottom="10dp"
+                android:inputType="text"/>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Penanggung Jawab"
+                android:textColor="#546e7a"/>
+
+            <EditText
+                android:id="@+id/pj"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="10dp"
+                android:background="@xml/input"
+                android:layout_marginBottom="10dp"
+                android:inputType="text"/>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Kebutuhan"
+                android:textColor="#546e7a"/>
+
+            <EditText
+                android:id="@+id/butuh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="20dp"
+                android:background="@xml/input"
+                android:layout_marginBottom="10dp"
+                android:inputType="text"/>
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Keterangan"
+                android:textColor="#546e7a"/>
+
+            <EditText
+                android:id="@+id/ket"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:padding="20dp"
+                android:background="@xml/input"
+                android:layout_marginBottom="10dp"
+                android:inputType="text"/>
+
+
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tanggal Ultah"
+                android:textColor="#546e7a"/>
+
+            <TextView
+                android:id="@+id/tgl_ultah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:clickable="true"
+                android:drawableStart="@drawable/ic_date"
+                android:focusable="true"
+                android:hint="20 Desember 2020"
+                android:textColor="#546e7a"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:id="@+id/textView0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gambar"
+                android:textColor="#546e7a"/>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Insert Data"
+                android:background="@xml/button"
+                android:textColor="#fff"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
