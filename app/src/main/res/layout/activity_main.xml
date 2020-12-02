@@ -208,19 +208,13 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginTop="10dp" />
 
-            <TextView
-                android:id="@+id/textView0"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Gambar"
-                android:textColor="#546e7a"/>
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:text="Insert Data"
+                android:layout_marginTop="40dp"
+                android:text="Tambah Data"
                 android:background="@xml/button"
                 android:textColor="#fff"/>
 
