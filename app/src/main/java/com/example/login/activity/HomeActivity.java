@@ -11,6 +11,7 @@ import java.util.HashMap;
 
 import com.example.R;
 import com.example.form.ListActivity;
+import com.example.form.MainActivity;
 import com.example.login.helper.SQLiteHandler;
 import com.example.login.helper.SessionManager;
 
@@ -80,7 +81,7 @@ public class HomeActivity extends Activity {
 		db.deleteUsers();
 
 		// Launching the login activity
-		Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+		Intent intent = new Intent(HomeActivity.this, MainActivity.class);
 		startActivity(intent);
 		finish();
 	}

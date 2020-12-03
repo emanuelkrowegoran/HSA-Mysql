@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.form.DetailData;
+import com.example.form.EditActivity;
+import com.example.form.MainActivity;
 import com.example.login.activity.LoginActivity;
 import com.example.form.ListActivity;
 import com.example.R;
