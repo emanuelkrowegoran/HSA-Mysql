@@ -3,12 +3,17 @@ package com.example.form;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.DatePicker;
@@ -21,18 +26,23 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import androidx.annotation.Nullable;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import android.widget.Spinner;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,15 +51,16 @@ public class MainActivity extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener date2;
 
 
+    ImageView imageView;
+    private FloatingActionButton selectImg;
+    private static final int SELECT_IMAGE = 100;
     Spinner area;
-    TextView tgl_kunjungan,tgl_ultah;
-    EditText  namatmp, alamat, phone, pemilik, kebutuhan, penanggungjwb, keterangan;
+    TextView tgl_kunjungan, tgl_ultah;
+    EditText namatmp, alamat, phone, pemilik, kebutuhan, penanggungjwb, keterangan;
     String Tgl_kunjungan, Namatmp, Alamat, Phone, Pemilik, Kebutuhan, Penanggungjwb, Keterangan, Tgl_ultah;
     Button button;
     Boolean valid = true;
     ProgressDialog progressDialog;
-
-
 
 
     @Override
@@ -57,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final String[] Area = {"Kota", "Utara", "Timur", "Barat" , "Selatan"};
+        final String[] Area = {"Kota", "Utara", "Timur", "Barat", "Selatan"};
 
         //getting views
         area = (Spinner) findViewById(R.id.area);
@@ -69,18 +80,34 @@ public class MainActivity extends AppCompatActivity {
         penanggungjwb = (EditText) findViewById(R.id.pj);
         pemilik = (EditText) findViewById(R.id.pemilik);
         kebutuhan = (EditText) findViewById(R.id.butuh);
-        keterangan  = (EditText) findViewById(R.id.ket);
+        keterangan = (EditText) findViewById(R.id.ket);
         tgl_ultah = findViewById(R.id.tgl_ultah);
+        imageView = findViewById(R.id.displayImage);
+        selectImg = findViewById(R.id.selectImg);
+
+
 
         progressDialog = new ProgressDialog(this);
         button = (Button) findViewById(R.id.button);
 
 
+        selectImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(i, SELECT_IMAGE);
+            }
+        });
+
+
+
+
         ArrayAdapter<CharSequence> adapterAreaa = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, Area);
         adapterAreaa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         area.setAdapter(adapterAreaa);
-
-
 
 
         myCalendar = Calendar.getInstance();
@@ -135,6 +162,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == SELECT_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            ImageView imageView = findViewById(R.id.displayImage);
+            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+        }
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,74 +195,75 @@ public class MainActivity extends AppCompatActivity {
                 Kebutuhan = kebutuhan.getText().toString();
                 Penanggungjwb = penanggungjwb.getText().toString();
                 Keterangan = keterangan.getText().toString();
-                Tgl_ultah  = tgl_ultah .getText().toString();
+                Tgl_ultah = tgl_ultah.getText().toString();
                 final String Area = area.getSelectedItem().toString();
 
 
-                if(TextUtils.isEmpty(Tgl_kunjungan)){
+                if (TextUtils.isEmpty(Tgl_kunjungan)) {
                     tgl_kunjungan.setError("Tanggal Kunjungan Cannot be Empty");
                     valid = false;
-                }else {
+                } else {
                     valid = true;
 
-                    if(TextUtils.isEmpty(Namatmp)){
+                    if (TextUtils.isEmpty(Namatmp)) {
                         namatmp.setError("Name Cannot be Empty");
                         valid = false;
-                    }else {
+                    } else {
                         valid = true;
 
-                        if(TextUtils.isEmpty(Alamat)){
+                        if (TextUtils.isEmpty(Alamat)) {
                             alamat.setError("Address Cannot be Empty");
                             valid = false;
-                        }else {
+                        } else {
                             valid = true;
 
-                            if(TextUtils.isEmpty(Phone)){
+                            if (TextUtils.isEmpty(Phone)) {
                                 phone.setError("Contact Number Cannot be Empty");
                                 valid = false;
-                            }else {
+                            } else {
                                 valid = true;
 
-                                if(TextUtils.isEmpty(Pemilik)){
+                                if (TextUtils.isEmpty(Pemilik)) {
                                     pemilik.setError("Pemilik Cannot be Empty");
                                     valid = false;
-                                }else {
+                                } else {
                                     valid = true;
 
-                                    if(TextUtils.isEmpty(Penanggungjwb)){
+                                    if (TextUtils.isEmpty(Penanggungjwb)) {
                                         penanggungjwb.setError("Penanggung jawab Cannot be Empty");
                                         valid = false;
-                                    }else {
+                                    } else {
                                         valid = true;
 
-                                        if(TextUtils.isEmpty(Kebutuhan)){
+                                        if (TextUtils.isEmpty(Kebutuhan)) {
                                             kebutuhan.setError("Kebutuhan Cannot be Empty");
                                             valid = false;
-                                        }else {
+                                        } else {
                                             valid = true;
 
-                                            if(TextUtils.isEmpty(Keterangan)){
+                                            if (TextUtils.isEmpty(Keterangan)) {
                                                 keterangan.setError("Keterangan Cannot be Empty");
                                                 valid = false;
-                                            }else {
+                                            } else {
                                                 valid = true;
 
-                                                if(TextUtils.isEmpty(Tgl_ultah)){
+                                                if (TextUtils.isEmpty(Tgl_ultah)) {
                                                     tgl_ultah.setError("Tgl ultah Cannot be Empty");
                                                     valid = false;
-                                                }else {
+                                                } else {
                                                     valid = true;
+                                                }
                                             }
-                                            }
-                        }
-                    }
-                }
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
 
-                if(valid){
+
+                if (valid) {
                     progressDialog.setMessage("Loading");
                     progressDialog.show();
 
@@ -221,14 +271,14 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(String response) {
                             progressDialog.dismiss();
-                            try{
+                            try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 Toast.makeText(MainActivity.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-                                if(jsonObject.getString("message").equals("Data Berhasil ditambahkan")){
+                                if (jsonObject.getString("message").equals("Data Berhasil ditambahkan")) {
                                     ListActivity.ma.refresh_list();
                                     finish();
                                 }
-                            }catch (JSONException e) {
+                            } catch (JSONException e) {
                                 e.printStackTrace();
                             }
                         }
@@ -236,21 +286,21 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             progressDialog.hide();
-                            Toast.makeText(MainActivity.this, "Gagal ditambahkan",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Gagal ditambahkan", Toast.LENGTH_SHORT).show();
                         }
-                    }){
-                        protected Map<String , String> getParams() throws AuthFailureError {
-                            Map<String , String> params = new HashMap<>();
+                    }) {
+                        protected Map<String, String> getParams() throws AuthFailureError {
+                            Map<String, String> params = new HashMap<>();
                             params.put("namatmp", Namatmp);
                             params.put("tgl_kunjungan", Tgl_kunjungan);
                             params.put("phone", Phone);
-                            params.put("alamat",Alamat);
-                            params.put("penanggungjwb",Penanggungjwb);
-                            params.put("pemilik",Pemilik);
-                            params.put("kebutuhan",Kebutuhan);
-                            params.put("keterangan",Keterangan);
-                            params.put("tgl_ultah",Tgl_ultah);
-                            params.put("area",Area);
+                            params.put("alamat", Alamat);
+                            params.put("penanggungjwb", Penanggungjwb);
+                            params.put("pemilik", Pemilik);
+                            params.put("kebutuhan", Kebutuhan);
+                            params.put("keterangan", Keterangan);
+                            params.put("tgl_ultah", Tgl_ultah);
+                            params.put("area", Area);
                             return params;
                         }
                     };
@@ -262,9 +312,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
-
-
 }
+
+

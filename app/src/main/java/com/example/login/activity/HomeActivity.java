@@ -81,7 +81,7 @@ public class HomeActivity extends Activity {
 		db.deleteUsers();
 
 		// Launching the login activity
-		Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+		Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
 		startActivity(intent);
 		finish();
 	}
