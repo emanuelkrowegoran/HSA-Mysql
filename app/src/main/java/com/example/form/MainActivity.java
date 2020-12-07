@@ -26,6 +26,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.R;
+import com.example.login.activity.HomeActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     ImageView imageView;
-    private FloatingActionButton selectImg;
+    Button selectImg;
     private static final int SELECT_IMAGE = 100;
     Spinner area;
     TextView tgl_kunjungan, tgl_ultah;
@@ -82,27 +83,21 @@ public class MainActivity extends AppCompatActivity {
         kebutuhan = (EditText) findViewById(R.id.butuh);
         keterangan = (EditText) findViewById(R.id.ket);
         tgl_ultah = findViewById(R.id.tgl_ultah);
-        imageView = findViewById(R.id.displayImage);
-        selectImg = findViewById(R.id.selectImg);
+        imageView = findViewById(R.id.imageView);
 
 
 
         progressDialog = new ProgressDialog(this);
         button = (Button) findViewById(R.id.button);
+        selectImg = (Button) findViewById(R.id.selectImg);
 
 
         selectImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(
-                        Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-                startActivityForResult(i, SELECT_IMAGE);
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UploudGambar.class);
+                startActivity(intent);
             }
         });
-
-
 
 
         ArrayAdapter<CharSequence> adapterAreaa = new ArrayAdapter<CharSequence>(this, android.R.layout.simple_spinner_item, Area);
@@ -162,27 +157,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == SELECT_IMAGE && resultCode == RESULT_OK && null != data) {
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
 
-            Cursor cursor = getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
-
-            ImageView imageView = findViewById(R.id.displayImage);
-            imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
-        }
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override

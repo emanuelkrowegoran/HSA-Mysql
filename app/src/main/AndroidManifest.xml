@@ -11,45 +11,51 @@
         android:allowBackup="true"
         android:icon="@drawable/ikon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
 
         <activity
             android:name=".Splash"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.activity.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+        <activity
+            android:name=".login.activity.LoginActivity"
             android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".login.activity.RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/app_name"
             android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".login.activity.HomeActivity"
-            android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/app_name"
-            android:launchMode="singleTop" />
-
-        <activity android:name=".form.ListActivity"
-            android:theme="@style/AppTheme.Form"/>
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".form.ListActivity"
+            android:theme="@style/AppTheme.Form" />
         <activity
             android:name=".form.MainActivity"
-            android:theme="@style/AppTheme.Form"
-            android:parentActivityName=".form.ListActivity" />
-        <activity android:name=".form.DetailData"
-            android:theme="@style/AppTheme.Form"
-            android:parentActivityName=".form.ListActivity" />
-        <activity android:name=".form.EditActivity"
-            android:theme="@style/AppTheme.Form"
-            android:parentActivityName=".form.ListActivity" />
+            android:parentActivityName=".form.ListActivity"
+            android:theme="@style/AppTheme.Form" />
+        <activity
+            android:name=".form.DetailData"
+            android:parentActivityName=".form.ListActivity"
+            android:theme="@style/AppTheme.Form" />
+        <activity
+            android:name=".form.EditActivity"
+            android:parentActivityName=".form.ListActivity"
+            android:theme="@style/AppTheme.Form" />
+
+        <activity android:name=".form.UploudGambar"/>
     </application>
+
 </manifest>

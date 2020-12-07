@@ -9,6 +9,7 @@ import android.os.Handler;
 import com.example.form.DetailData;
 import com.example.form.EditActivity;
 import com.example.form.MainActivity;
+import com.example.form.UploudGambar;
 import com.example.login.activity.LoginActivity;
 import com.example.form.ListActivity;
 import com.example.R;
