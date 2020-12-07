@@ -93,15 +93,15 @@ public class ListActivity extends AppCompatActivity {
                         JSONObject o = jsonArray.getJSONObject(i);
                        Model item = new Model(
                                 o.getString("id"),
-                                o.getString("tgl_kunjungan"),
-                                o.getString("namatmp"),
-                                o.getString("phone"),
+                                o.getString("tanggal_kunjungan"),
+                                o.getString("nama"),
+                                o.getString("kontak"),
                                 o.getString("alamat"),
-                               o.getString("penanggungjwb"),
+                               o.getString("penanggungjawab"),
                                o.getString("pemilik"),
                                o.getString("kebutuhan"),
                                o.getString("keterangan"),
-                               o.getString("tgl_ultah"),
+                               o.getString("ttl"),
                                o.getString("area")
                         );
                         listItems.add(item);
@@ -123,7 +123,7 @@ public class ListActivity extends AppCompatActivity {
         }){
             protected Map<String , String> getParams() throws AuthFailureError {
                 Map<String , String> params = new HashMap<>();
-                params.put("namatmp", "kl");
+                params.put("nama", "kl");
                 return params;
             }
         };

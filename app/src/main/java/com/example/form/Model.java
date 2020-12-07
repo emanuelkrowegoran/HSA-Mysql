@@ -1,41 +1,41 @@
 package com.example.form;
 
 public class Model {
-    String id,tgl_kunjungan,namatmp,phone,alamat,pemilik,kebutuhan,penanggungjwb, keterangan, tgl_ultah, area;
+    String id,tanggal_kunjungan,nama,kontak,alamat,pemilik,kebutuhan,penanggungjawab, keterangan, ttl, area;
 
-    public Model(String id ,String tgl_kunjungan, String namatmp, String phone, String alamat, String pemilik, String penanggungjwb, String kebutuhan,  String keterangan, String tgl_ultah, String area ) {
+    public Model(String id ,String tanggal_kunjungan, String nama, String kontak, String alamat, String pemilik, String penanggungjawab, String kebutuhan,  String keterangan, String ttl, String area ) {
         this.id = id;
-        this.tgl_kunjungan = tgl_kunjungan;
-        this.namatmp = namatmp;
-        this.phone = phone;
+        this.tanggal_kunjungan = tanggal_kunjungan;
+        this.nama = nama;
+        this.kontak = kontak;
         this.alamat = alamat;
-        this.penanggungjwb = penanggungjwb;
+        this.penanggungjawab = penanggungjawab;
         this.pemilik = pemilik;
         this.kebutuhan = kebutuhan;
         this.keterangan = keterangan;
-        this.tgl_ultah = tgl_ultah;
+        this.ttl = ttl;
         this.area = area;
     }
 
     public String getId(){
         return id;
     }
-    public String getTgl_kunjungan(){
-        return tgl_kunjungan;
+    public String getTanggal_kunjungan(){
+        return tanggal_kunjungan;
     }
-    public String getNamatmp(){
-        return namatmp;
+    public String getNama(){
+        return nama;
     }
 
-    public String getPhone(){
-        return phone;
+    public String getKontak(){
+        return kontak;
     }
 
     public String getAlamat(){
         return alamat;
     }
-    public String getPenanggungjwb(){
-        return penanggungjwb;
+    public String getPenanggungjawab(){
+        return penanggungjawab;
     }
 
     public String getPemilik(){
@@ -47,8 +47,8 @@ public class Model {
     public String getKeterangan(){
         return keterangan;
     }
-    public String getTgl_ultah(){
-        return tgl_ultah;
+    public String getTtl(){
+        return ttl;
     }
     public  String getArea() { return  area;}
 

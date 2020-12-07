@@ -8,32 +8,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.R;
 
 public class DetailData extends AppCompatActivity {
-    TextView area, tgl_kunjungan, namatmp, alamat, phone, pemilik, kebutuhan, keterangan, penanggungjwb, tgl_ultah ;
+    TextView area, tanggal_kunjungan, nama, alamat, kontak, pemilik, kebutuhan, keterangan, penanggungjawab, ttl ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_data);
 
-        tgl_kunjungan = (TextView) findViewById(R.id.tgl_kunjungan);
-        namatmp = (TextView) findViewById(R.id.tmp);
+        tanggal_kunjungan = (TextView) findViewById(R.id.tgl_kunjungan);
+        nama = (TextView) findViewById(R.id.tmp);
         alamat = (TextView) findViewById(R.id.almt);
-        phone = (TextView) findViewById(R.id.ktk);
+        kontak = (TextView) findViewById(R.id.ktk);
         pemilik = (TextView) findViewById(R.id.pemilik);
-        penanggungjwb = (TextView) findViewById(R.id.pj);
+        penanggungjawab = (TextView) findViewById(R.id.pj);
         kebutuhan = (TextView) findViewById(R.id.butuh);
         keterangan = (TextView) findViewById(R.id.ket);
-        tgl_ultah = (TextView) findViewById(R.id.tgl_ultah);
+        ttl = (TextView) findViewById(R.id.tgl_ultah);
         area = (TextView) findViewById(R.id.area);
 
-        tgl_kunjungan.setText(getIntent().getStringExtra("tgl_kunjungan"));
-        namatmp.setText(getIntent().getStringExtra("namatmp"));
+        tanggal_kunjungan.setText(getIntent().getStringExtra("tanggal_kunjungan"));
+        nama.setText(getIntent().getStringExtra("nama"));
         alamat.setText(getIntent().getStringExtra("alamat"));
-        phone.setText(getIntent().getStringExtra("phone"));
+        kontak.setText(getIntent().getStringExtra("kontak"));
         pemilik.setText(getIntent().getStringExtra("pemilik"));
-        penanggungjwb.setText(getIntent().getStringExtra("penanggungjwb"));
+        penanggungjawab.setText(getIntent().getStringExtra("penanggungjawab"));
         kebutuhan.setText(getIntent().getStringExtra("kebutuhan"));
         keterangan.setText(getIntent().getStringExtra("keterangan"));
-        tgl_ultah.setText(getIntent().getStringExtra("tgl_ultah"));
+        ttl.setText(getIntent().getStringExtra("ttl"));
         area.setText(getIntent().getStringExtra("area"));
     }
 }

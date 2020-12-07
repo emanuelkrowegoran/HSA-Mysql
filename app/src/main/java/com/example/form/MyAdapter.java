@@ -41,30 +41,30 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public TextView id;
-        public TextView tgl_kunjungan;
-        public TextView namatmp;
+        public TextView tanggal_kunjungan;
+        public TextView nama;
         public TextView alamat;
-        public TextView phone;
+        public TextView kontak;
         public TextView pemilik;
         public TextView kebutuhan;
-        public TextView penanggungjwb;
+        public TextView penanggungjawab;
         public TextView keterangan;
         public CardView card_view;
-        public TextView tgl_ultah;
+        public TextView ttl;
         public TextView area;
 
         public ViewHolder(View itemView ) {
             super(itemView);
             id = (TextView) itemView.findViewById(R.id.id);
-            tgl_kunjungan = (TextView) itemView.findViewById(R.id.tgl_kunjungan);
-            namatmp = (TextView) itemView.findViewById(R.id.tmp);
+            tanggal_kunjungan = (TextView) itemView.findViewById(R.id.tgl_kunjungan);
+            nama = (TextView) itemView.findViewById(R.id.tmp);
             alamat = (TextView) itemView.findViewById(R.id.almt);
-            phone = (TextView) itemView.findViewById(R.id.ktk);
+            kontak = (TextView) itemView.findViewById(R.id.ktk);
             pemilik = (TextView) itemView.findViewById(R.id.pemilik);
             kebutuhan = (TextView) itemView.findViewById(R.id.butuh);
-            penanggungjwb = (TextView) itemView.findViewById(R.id.pj);
+            penanggungjawab = (TextView) itemView.findViewById(R.id.pj);
             keterangan = (TextView) itemView.findViewById(R.id.ket);
-            tgl_ultah = (TextView) itemView.findViewById(R.id.tgl_ultah);
+            ttl = (TextView) itemView.findViewById(R.id.tgl_ultah);
             area = (TextView) itemView.findViewById(R.id.area) ;
 
             card_view = (CardView) itemView.findViewById(R.id.card_view);
@@ -84,15 +84,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Model listItem = listItems.get(position);
         holder.id.setText(listItem.getId());
-        holder.tgl_kunjungan.setText(listItem.getTgl_kunjungan());
-        holder.namatmp.setText(listItem.getNamatmp());
+        holder.tanggal_kunjungan.setText(listItem.getTanggal_kunjungan());
+        holder.nama.setText(listItem.getNama());
         holder.alamat.setText(listItem.getAlamat());
-        holder.phone.setText(listItem.getPhone());
+        holder.kontak.setText(listItem.getKontak());
         holder.pemilik.setText(listItem.getPemilik());
         holder.kebutuhan.setText(listItem.getKebutuhan());
-        holder.penanggungjwb.setText(listItem.getPenanggungjwb());
+        holder.penanggungjawab.setText(listItem.getPenanggungjawab());
         holder.keterangan.setText(listItem.getKeterangan());
-        holder.tgl_ultah.setText(listItem.getTgl_ultah());
+        holder.ttl.setText(listItem.getTtl());
         holder.area.setText(listItem.getArea());
 
         holder.card_view.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +103,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                 final ProgressDialog dialog = new ProgressDialog(view.getContext());
                 dialog.setMessage("Loading Delete Data");
                 final CharSequence[] dialogitem = {"View Data","Edit Data","Delete Data"};
-                builder.setTitle(listItem.getNamatmp());
+                builder.setTitle(listItem.getNama());
                 builder.setItems(dialogitem, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -111,15 +111,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                             case 0 :
                                 Intent intent = new Intent(view.getContext(), DetailData.class);
                                 intent.putExtra("id", listItem.getId());
-                                intent.putExtra("tgl_kunjungan",listItem.getTgl_kunjungan());
-                                intent.putExtra("namatmp",listItem.getNamatmp());
+                                intent.putExtra("tanggal_kunjungan",listItem.getTanggal_kunjungan());
+                                intent.putExtra("nama",listItem.getNama());
                                 intent.putExtra("alamat",listItem.getAlamat());
-                                intent.putExtra("phone", listItem.getPhone());
+                                intent.putExtra("kontak", listItem.getKontak());
                                 intent.putExtra("pemilik", listItem.getPemilik());
                                 intent.putExtra("kebutuhan", listItem.getKebutuhan());
-                                intent.putExtra("penanggungjwb", listItem.getPenanggungjwb());
+                                intent.putExtra("penanggungjawab", listItem.getPenanggungjawab());
                                 intent.putExtra("keterangan", listItem.getKeterangan());
-                                intent.putExtra("tgl_ultah", listItem.getTgl_ultah());
+                                intent.putExtra("ttl", listItem.getTtl());
                                 intent.putExtra("area",listItem.getArea());
 
                                 view.getContext().startActivity(intent);
@@ -128,15 +128,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
                                 Intent intent2 = new Intent(view.getContext(), EditActivity.class);
                                 intent2.putExtra("id", listItem.getId());
-                                intent2.putExtra("tgl_kunjungan",listItem.getTgl_kunjungan());
-                                intent2.putExtra("namatmp",listItem.getNamatmp());
+                                intent2.putExtra("tanggal_kunjungan",listItem.getTanggal_kunjungan());
+                                intent2.putExtra("nama",listItem.getNama());
                                 intent2.putExtra("alamat",listItem.getAlamat());
-                                intent2.putExtra("phone", listItem.getPhone());
+                                intent2.putExtra("kontak", listItem.getKontak());
                                 intent2.putExtra("pemilik", listItem.getPemilik());
                                 intent2.putExtra("kebutuhan", listItem.getKebutuhan());
-                                intent2.putExtra("penanggungjwb", listItem.getPenanggungjwb());
+                                intent2.putExtra("penanggungjawab", listItem.getPenanggungjawab());
                                 intent2.putExtra("keterangan", listItem.getKeterangan());
-                                intent2.putExtra("tgl_ultah", listItem.getTgl_ultah());
+                                intent2.putExtra("ttl", listItem.getTtl());
                                 intent2.putExtra("area", listItem.getArea());
 
                                 view.getContext().startActivity(intent2);
@@ -144,7 +144,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                             case 2 :
 
                                 AlertDialog.Builder builderDel = new AlertDialog.Builder(view.getContext());
-                                builderDel.setTitle(listItem.getNamatmp());
+                                builderDel.setTitle(listItem.getNama());
                                 builderDel.setMessage("Are You Sure, You Want to Delete Data?");
                                 builderDel.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
@@ -157,7 +157,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                                             public void onResponse(String response) {
                                                 dialog.hide();
                                                 dialog.dismiss();
-                                                Toast.makeText(view.getContext(),"Berhasil Delete Data "+ listItem.getNamatmp(),Toast.LENGTH_LONG).show();
+                                                Toast.makeText(view.getContext(),"Berhasil Delete Data "+ listItem.getNama(),Toast.LENGTH_LONG).show();
                                                 ListActivity.ma.refresh_list();
 
                                             }

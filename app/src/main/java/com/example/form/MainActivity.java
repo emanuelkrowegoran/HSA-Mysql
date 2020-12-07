@@ -56,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
     Button selectImg;
     private static final int SELECT_IMAGE = 100;
     Spinner area;
-    TextView tgl_kunjungan, tgl_ultah;
-    EditText namatmp, alamat, phone, pemilik, kebutuhan, penanggungjwb, keterangan;
-    String Tgl_kunjungan, Namatmp, Alamat, Phone, Pemilik, Kebutuhan, Penanggungjwb, Keterangan, Tgl_ultah;
+    TextView tanggal_kunjungan, ttl;
+    EditText nama, alamat, kontak, pemilik, kebutuhan, penanggungjawab, keterangan;
+    String Tanggal_kunjungan, Nama, Alamat, Kontak, Pemilik, Kebutuhan, Penanggungjawab, Keterangan, Ttl;
     Button button;
     Boolean valid = true;
     ProgressDialog progressDialog;
@@ -74,15 +74,15 @@ public class MainActivity extends AppCompatActivity {
         //getting views
         area = (Spinner) findViewById(R.id.area);
 
-        tgl_kunjungan = findViewById(R.id.tgl_kunjungan);
-        namatmp = (EditText) findViewById(R.id.tmp);
+        tanggal_kunjungan = findViewById(R.id.tgl_kunjungan);
+        nama = (EditText) findViewById(R.id.tmp);
         alamat = (EditText) findViewById(R.id.almt);
-        phone = (EditText) findViewById(R.id.ktk);
-        penanggungjwb = (EditText) findViewById(R.id.pj);
+        kontak = (EditText) findViewById(R.id.ktk);
+        penanggungjawab = (EditText) findViewById(R.id.pj);
         pemilik = (EditText) findViewById(R.id.pemilik);
         kebutuhan = (EditText) findViewById(R.id.butuh);
         keterangan = (EditText) findViewById(R.id.ket);
-        tgl_ultah = findViewById(R.id.tgl_ultah);
+        ttl = findViewById(R.id.tgl_ultah);
         imageView = findViewById(R.id.imageView);
 
 
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        tgl_kunjungan.setOnClickListener(new View.OnClickListener() {
+        tanggal_kunjungan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(MainActivity.this, date,
@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        tgl_ultah.setOnClickListener(new View.OnClickListener() {
+        ttl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(MainActivity.this, date2,
@@ -163,26 +163,26 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Tgl_kunjungan = tgl_kunjungan.getText().toString();
-                Namatmp = namatmp.getText().toString();
+                Tanggal_kunjungan = tanggal_kunjungan.getText().toString();
+                Nama = nama.getText().toString();
                 Alamat = alamat.getText().toString();
-                Phone = phone.getText().toString();
+                Kontak = kontak.getText().toString();
                 Pemilik = pemilik.getText().toString();
                 Kebutuhan = kebutuhan.getText().toString();
-                Penanggungjwb = penanggungjwb.getText().toString();
+                Penanggungjawab = penanggungjawab.getText().toString();
                 Keterangan = keterangan.getText().toString();
-                Tgl_ultah = tgl_ultah.getText().toString();
+                Ttl = ttl.getText().toString();
                 final String Area = area.getSelectedItem().toString();
 
 
-                if (TextUtils.isEmpty(Tgl_kunjungan)) {
-                    tgl_kunjungan.setError("Tanggal Kunjungan Cannot be Empty");
+                if (TextUtils.isEmpty(Tanggal_kunjungan)) {
+                    tanggal_kunjungan.setError("Tanggal Kunjungan Cannot be Empty");
                     valid = false;
                 } else {
                     valid = true;
 
-                    if (TextUtils.isEmpty(Namatmp)) {
-                        namatmp.setError("Name Cannot be Empty");
+                    if (TextUtils.isEmpty(Nama)) {
+                        nama.setError("Name Cannot be Empty");
                         valid = false;
                     } else {
                         valid = true;
@@ -193,8 +193,8 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             valid = true;
 
-                            if (TextUtils.isEmpty(Phone)) {
-                                phone.setError("Contact Number Cannot be Empty");
+                            if (TextUtils.isEmpty(Kontak)) {
+                                kontak.setError("Contact Number Cannot be Empty");
                                 valid = false;
                             } else {
                                 valid = true;
@@ -205,8 +205,8 @@ public class MainActivity extends AppCompatActivity {
                                 } else {
                                     valid = true;
 
-                                    if (TextUtils.isEmpty(Penanggungjwb)) {
-                                        penanggungjwb.setError("Penanggung jawab Cannot be Empty");
+                                    if (TextUtils.isEmpty(Penanggungjawab)) {
+                                        penanggungjawab.setError("Penanggung jawab Cannot be Empty");
                                         valid = false;
                                     } else {
                                         valid = true;
@@ -223,8 +223,8 @@ public class MainActivity extends AppCompatActivity {
                                             } else {
                                                 valid = true;
 
-                                                if (TextUtils.isEmpty(Tgl_ultah)) {
-                                                    tgl_ultah.setError("Tgl ultah Cannot be Empty");
+                                                if (TextUtils.isEmpty(Ttl)) {
+                                                    ttl.setError("Tgl ultah Cannot be Empty");
                                                     valid = false;
                                                 } else {
                                                     valid = true;
@@ -267,15 +267,15 @@ public class MainActivity extends AppCompatActivity {
                     }) {
                         protected Map<String, String> getParams() throws AuthFailureError {
                             Map<String, String> params = new HashMap<>();
-                            params.put("namatmp", Namatmp);
-                            params.put("tgl_kunjungan", Tgl_kunjungan);
-                            params.put("phone", Phone);
+                            params.put("nama", Nama);
+                            params.put("tanggal_kunjungan", Tanggal_kunjungan);
+                            params.put("kontak", Kontak);
                             params.put("alamat", Alamat);
-                            params.put("penanggungjwb", Penanggungjwb);
+                            params.put("penanggungjawab", Penanggungjawab);
                             params.put("pemilik", Pemilik);
                             params.put("kebutuhan", Kebutuhan);
                             params.put("keterangan", Keterangan);
-                            params.put("tgl_ultah", Tgl_ultah);
+                            params.put("ttl", Ttl);
                             params.put("area", Area);
                             return params;
                         }

@@ -211,11 +211,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Uploud Gambar"
+                android:text="Gambar"
                 android:textColor="#546e7a"/>
 
                 <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/displayImage"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:padding="16dp"
@@ -229,7 +229,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="10dp"
-                    android:hint="Uploud"
+                    android:hint="Uploud Gambar"
                     app:fabSize="mini"/>
 
 

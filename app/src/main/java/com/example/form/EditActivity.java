@@ -41,12 +41,13 @@ public class EditActivity extends AppCompatActivity {
 
 
     Spinner area;
-    TextView tgl_kunjungan,tgl_ultah;
-    EditText  namatmp, alamat, phone, pemilik, kebutuhan, penanggungjwb, keterangan;
-    String Area,Tgl_kunjungan, Namatmp, Alamat, Phone,Id, Pemilik, Kebutuhan, Penanggungjwb, Keterangan, Tgl_ultah;
+    TextView tanggal_kunjungan, ttl;
+    EditText nama, alamat, kontak, pemilik, kebutuhan, penanggungjawab, keterangan;
+    String Tanggal_kunjungan, Nama, Alamat, Kontak,Id, Pemilik, Kebutuhan, Penanggungjawab, Keterangan, Ttl;
     Button button;
     Boolean valid = true;
     ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,15 +56,16 @@ public class EditActivity extends AppCompatActivity {
         final String[] Area = {"Kota", "Utara", "Timur", "Barat" , "Selatan"};
 //getting views
         area = (Spinner) findViewById(R.id.area);
-        tgl_kunjungan = findViewById(R.id.tgl_kunjungan);
-        namatmp = (EditText) findViewById(R.id.tmp);
+
+        tanggal_kunjungan = findViewById(R.id.tgl_kunjungan);
+        nama = (EditText) findViewById(R.id.tmp);
         alamat = (EditText) findViewById(R.id.almt);
-        phone = (EditText) findViewById(R.id.ktk);
+        kontak = (EditText) findViewById(R.id.ktk);
+        penanggungjawab = (EditText) findViewById(R.id.pj);
         pemilik = (EditText) findViewById(R.id.pemilik);
         kebutuhan = (EditText) findViewById(R.id.butuh);
-        penanggungjwb = (EditText) findViewById(R.id.pj);
         keterangan = (EditText) findViewById(R.id.ket);
-        tgl_ultah = findViewById(R.id.tgl_ultah);
+        ttl = findViewById(R.id.tgl_ultah);
 
         progressDialog = new ProgressDialog(this);
         button = (Button) findViewById(R.id.button);
@@ -90,7 +92,7 @@ public class EditActivity extends AppCompatActivity {
             }
         };
 
-        tgl_kunjungan.setOnClickListener(new View.OnClickListener() {
+        tanggal_kunjungan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(EditActivity.this, date,
@@ -115,7 +117,7 @@ public class EditActivity extends AppCompatActivity {
             }
         };
 
-        tgl_ultah.setOnClickListener(new View.OnClickListener() {
+        ttl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 new DatePickerDialog(EditActivity.this, date2,
@@ -127,84 +129,84 @@ public class EditActivity extends AppCompatActivity {
 
 
         Id = getIntent().getStringExtra("id");
-        tgl_kunjungan.setText(getIntent().getStringExtra("tgl_kunjungan"));
-        namatmp.setText(getIntent().getStringExtra("namatmp"));
+        tanggal_kunjungan.setText(getIntent().getStringExtra("tanggal_kunjungan"));
+        nama.setText(getIntent().getStringExtra("nama"));
         alamat.setText(getIntent().getStringExtra("alamat"));
-        phone.setText(getIntent().getStringExtra("phone"));
+        kontak.setText(getIntent().getStringExtra("kontak"));
         pemilik.setText(getIntent().getStringExtra("pemilik"));
         kebutuhan.setText(getIntent().getStringExtra("kebutuhan"));
-        penanggungjwb.setText(getIntent().getStringExtra("penanggungjwb"));
+        penanggungjawab.setText(getIntent().getStringExtra("penanggungjawab"));
         keterangan.setText(getIntent().getStringExtra("keterangan"));
-        tgl_ultah.setText(getIntent().getStringExtra("tgl_ultah"));
+        ttl.setText(getIntent().getStringExtra("ttl"));
 
 
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Tgl_kunjungan = tgl_kunjungan.getText().toString();
-                Namatmp = namatmp.getText().toString();
+                Tanggal_kunjungan = tanggal_kunjungan.getText().toString();
+                Nama = nama.getText().toString();
                 Alamat = alamat.getText().toString();
-                Phone = phone.getText().toString();
+                Kontak = kontak.getText().toString();
                 Pemilik = pemilik.getText().toString();
                 Kebutuhan = kebutuhan.getText().toString();
-                Penanggungjwb = penanggungjwb.getText().toString();
+                Penanggungjawab = penanggungjawab.getText().toString();
                 Keterangan = keterangan.getText().toString();
-                Tgl_ultah = tgl_ultah.getText().toString();
+                Ttl = ttl.getText().toString();
                 final String Area = area.getSelectedItem().toString();
 
-                if(TextUtils.isEmpty(Tgl_kunjungan)){
-                    tgl_kunjungan.setError("Tanggal Kunjungan Cannot be Empty");
+                if (TextUtils.isEmpty(Tanggal_kunjungan)) {
+                    tanggal_kunjungan.setError("Tanggal Kunjungan Cannot be Empty");
                     valid = false;
-                }else {
+                } else {
                     valid = true;
 
-                    if(TextUtils.isEmpty(Namatmp)){
-                        namatmp.setError("Name Cannot be Empty");
+                    if (TextUtils.isEmpty(Nama)) {
+                        nama.setError("Name Cannot be Empty");
                         valid = false;
-                    }else {
+                    } else {
                         valid = true;
 
-                        if(TextUtils.isEmpty(Alamat)){
+                        if (TextUtils.isEmpty(Alamat)) {
                             alamat.setError("Address Cannot be Empty");
                             valid = false;
-                        }else {
+                        } else {
                             valid = true;
 
-                            if(TextUtils.isEmpty(Phone)){
-                                phone.setError("Contact Number Cannot be Empty");
+                            if (TextUtils.isEmpty(Kontak)) {
+                                kontak.setError("Contact Number Cannot be Empty");
                                 valid = false;
-                            }else {
+                            } else {
                                 valid = true;
 
-                                if(TextUtils.isEmpty(Pemilik)){
+                                if (TextUtils.isEmpty(Pemilik)) {
                                     pemilik.setError("Pemilik Cannot be Empty");
                                     valid = false;
-                                }else {
+                                } else {
                                     valid = true;
 
-                                    if(TextUtils.isEmpty(Penanggungjwb)){
-                                        penanggungjwb.setError("Penanggung jawab Cannot be Empty");
+                                    if (TextUtils.isEmpty(Penanggungjawab)) {
+                                        penanggungjawab.setError("Penanggung jawab Cannot be Empty");
                                         valid = false;
-                                    }else {
+                                    } else {
                                         valid = true;
 
-                                        if(TextUtils.isEmpty(Kebutuhan)){
+                                        if (TextUtils.isEmpty(Kebutuhan)) {
                                             kebutuhan.setError("Kebutuhan Cannot be Empty");
                                             valid = false;
-                                        }else {
+                                        } else {
                                             valid = true;
 
-                                            if(TextUtils.isEmpty(Keterangan)){
+                                            if (TextUtils.isEmpty(Keterangan)) {
                                                 keterangan.setError("Keterangan Cannot be Empty");
                                                 valid = false;
-                                            }else {
+                                            } else {
                                                 valid = true;
 
-                                                if(TextUtils.isEmpty(Tgl_ultah)){
-                                                    tgl_ultah.setError("Tgl ultah Cannot be Empty");
+                                                if (TextUtils.isEmpty(Ttl)) {
+                                                    ttl.setError("Tgl ultah Cannot be Empty");
                                                     valid = false;
-                                                }else {
+                                                } else {
                                                     valid = true;
                                                 }
                                             }
@@ -215,6 +217,7 @@ public class EditActivity extends AppCompatActivity {
                         }
                     }
                 }
+
                 if(valid){
                     progressDialog.setMessage("Loading");
                     progressDialog.show();
@@ -244,16 +247,16 @@ public class EditActivity extends AppCompatActivity {
                         protected Map<String , String> getParams() throws AuthFailureError {
                             Map<String , String> params = new HashMap<>();
                             params.put("id", Id);
-                            params.put("namatmp", Namatmp);
-                            params.put("tgl_kunjungan", Tgl_kunjungan);
-                            params.put("phone", Phone);
-                            params.put("alamat",Alamat);
-                            params.put("pemilik",Pemilik);
-                            params.put("keterangan",Keterangan);
-                            params.put("kebutuhan",Kebutuhan);
-                            params.put("penanggungjwb",Penanggungjwb);
-                            params.put("tgl_ultah", Tgl_ultah);
-                            params.put("area",Area);
+                            params.put("nama", Nama);
+                            params.put("tanggal_kunjungan", Tanggal_kunjungan);
+                            params.put("kontak", Kontak);
+                            params.put("alamat", Alamat);
+                            params.put("penanggungjawab", Penanggungjawab);
+                            params.put("pemilik", Pemilik);
+                            params.put("kebutuhan", Kebutuhan);
+                            params.put("keterangan", Keterangan);
+                            params.put("ttl", Ttl);
+                            params.put("area", Area);
 
                             return params;
                         }
