@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 TextView tanggal = findViewById(R.id.tgl_kunjungan);
-                String myFormat = "dd MMMM yyyy";
+                String myFormat = "yyyy-MM-dd";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
                 tanggal.setText(sdf.format(myCalendar.getTime()));
             }
@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
                 TextView tgl = findViewById(R.id.tgl_ultah);
-                String myFormat = "dd MMMM yyyy";
+                String myFormat = "yyyy-MM-dd hh:mm:ss";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
                 tgl.setText(sdf.format(myCalendar.getTime()));
             }
