@@ -115,7 +115,7 @@ public class UploudGambar extends AppCompatActivity {
                 GetImageNameFromEditText = imageName.getText().toString();
 
                 UploadImageToServer();
-                Intent intent = new Intent(UploudGambar.this, MainActivity.class);
+                Intent intent = new Intent(UploudGambar.this, FormActivity.class);
                 startActivity(intent);
 
             }

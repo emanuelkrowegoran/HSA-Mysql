@@ -23,7 +23,6 @@
             android:layout_height="match_parent"
             android:padding="8dp">
 
-
             <TextView
                 android:visibility="invisible"
                 android:layout_alignParentRight="true"

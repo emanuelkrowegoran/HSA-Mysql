@@ -156,55 +156,55 @@ public class EditActivity extends AppCompatActivity {
                 final String Area = area.getSelectedItem().toString();
 
                 if (TextUtils.isEmpty(Tanggal_kunjungan)) {
-                    tanggal_kunjungan.setError("Tanggal Kunjungan Cannot be Empty");
+                    tanggal_kunjungan.setError("Tanggal Kunjungan Tidak Boleh Kosong");
                     valid = false;
                 } else {
                     valid = true;
 
                     if (TextUtils.isEmpty(Nama)) {
-                        nama.setError("Name Cannot be Empty");
+                        nama.setError("Nama Tempat Tidak Boleh Kosong");
                         valid = false;
                     } else {
                         valid = true;
 
                         if (TextUtils.isEmpty(Alamat)) {
-                            alamat.setError("Address Cannot be Empty");
+                            alamat.setError("Alamat Tidak Boleh Kosong");
                             valid = false;
                         } else {
                             valid = true;
 
                             if (TextUtils.isEmpty(Kontak)) {
-                                kontak.setError("Contact Number Cannot be Empty");
+                                kontak.setError("Kontak Tidak Boleh Kosong");
                                 valid = false;
                             } else {
                                 valid = true;
 
                                 if (TextUtils.isEmpty(Pemilik)) {
-                                    pemilik.setError("Pemilik Cannot be Empty");
+                                    pemilik.setError("Pemilik Tidak Boleh Kosong");
                                     valid = false;
                                 } else {
                                     valid = true;
 
                                     if (TextUtils.isEmpty(Penanggungjawab)) {
-                                        penanggungjawab.setError("Penanggung jawab Cannot be Empty");
+                                        penanggungjawab.setError("Penanggung jawab Tidak Boleh Kosong");
                                         valid = false;
                                     } else {
                                         valid = true;
 
                                         if (TextUtils.isEmpty(Kebutuhan)) {
-                                            kebutuhan.setError("Kebutuhan Cannot be Empty");
+                                            kebutuhan.setError("Kebutuhan Tidak Boleh Kosong");
                                             valid = false;
                                         } else {
                                             valid = true;
 
                                             if (TextUtils.isEmpty(Keterangan)) {
-                                                keterangan.setError("Keterangan Cannot be Empty");
+                                                keterangan.setError("Keterangan Tidak Boleh Kosong");
                                                 valid = false;
                                             } else {
                                                 valid = true;
 
                                                 if (TextUtils.isEmpty(Ttl)) {
-                                                    ttl.setError("Tgl ultah Cannot be Empty");
+                                                    ttl.setError("Tanggal Ulang Tahun Tidak Boleh Kosong");
                                                     valid = false;
                                                 } else {
                                                     valid = true;

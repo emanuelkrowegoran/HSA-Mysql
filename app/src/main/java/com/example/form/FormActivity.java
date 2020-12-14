@@ -3,11 +3,7 @@ package com.example.form;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -26,26 +22,19 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.R;
-import com.example.login.activity.HomeActivity;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import androidx.annotation.Nullable;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 import android.widget.Spinner;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-public class MainActivity extends AppCompatActivity {
+public class FormActivity extends AppCompatActivity {
 
     Calendar myCalendar;
     DatePickerDialog.OnDateSetListener date;
@@ -67,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_form);
 
         final String[] Area = {"Kota", "Utara", "Timur", "Barat", "Selatan"};
 
@@ -94,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         selectImg.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, UploudGambar.class);
+                Intent intent = new Intent(FormActivity.this, UploudGambar.class);
                 startActivity(intent);
             }
         });
@@ -125,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
         tanggal_kunjungan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(MainActivity.this, date,
+                new DatePickerDialog(FormActivity.this, date,
                         myCalendar.get(Calendar.YEAR),
                         myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
@@ -150,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         ttl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new DatePickerDialog(MainActivity.this, date2,
+                new DatePickerDialog(FormActivity.this, date2,
                         myCalendar.get(Calendar.YEAR),
                         myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
@@ -176,59 +165,60 @@ public class MainActivity extends AppCompatActivity {
 
 
                 if (TextUtils.isEmpty(Tanggal_kunjungan)) {
-                    tanggal_kunjungan.setError("Tanggal Kunjungan Cannot be Empty");
+                    tanggal_kunjungan.setError("Tanggal Kunjungan Tidak Boleh Kosong");
                     valid = false;
                 } else {
                     valid = true;
 
                     if (TextUtils.isEmpty(Nama)) {
-                        nama.setError("Name Cannot be Empty");
+                        nama.setError("Nama Tempat tidak Boleh Kosong");
                         valid = false;
                     } else {
                         valid = true;
 
                         if (TextUtils.isEmpty(Alamat)) {
-                            alamat.setError("Address Cannot be Empty");
+                            alamat.setError("Alamat Tidak Boleh Kosong");
                             valid = false;
                         } else {
                             valid = true;
 
                             if (TextUtils.isEmpty(Kontak)) {
-                                kontak.setError("Contact Number Cannot be Empty");
+                                kontak.setError("Kontak Tidak Boleh Kosong");
                                 valid = false;
                             } else {
                                 valid = true;
 
                                 if (TextUtils.isEmpty(Pemilik)) {
-                                    pemilik.setError("Pemilik Cannot be Empty");
+                                    pemilik.setError("Pemilik Tidak Boleh Kosong");
                                     valid = false;
                                 } else {
                                     valid = true;
 
                                     if (TextUtils.isEmpty(Penanggungjawab)) {
-                                        penanggungjawab.setError("Penanggung jawab Cannot be Empty");
+                                        penanggungjawab.setError("Penanggung jawab Tidak Boleh Kosong");
                                         valid = false;
                                     } else {
                                         valid = true;
 
                                         if (TextUtils.isEmpty(Kebutuhan)) {
-                                            kebutuhan.setError("Kebutuhan Cannot be Empty");
+                                            kebutuhan.setError("Kebutuhan Tidak Boleh Kosong");
                                             valid = false;
                                         } else {
                                             valid = true;
 
                                             if (TextUtils.isEmpty(Keterangan)) {
-                                                keterangan.setError("Keterangan Cannot be Empty");
+                                                keterangan.setError("Keterangan Tidak Boleh Kosong");
                                                 valid = false;
                                             } else {
                                                 valid = true;
 
                                                 if (TextUtils.isEmpty(Ttl)) {
-                                                    ttl.setError("Tgl ultah Cannot be Empty");
+                                                    ttl.setError("Tanggal Ulang Tahun Tidak Boleh Kosong");
                                                     valid = false;
                                                 } else {
                                                     valid = true;
                                                 }
+
                                             }
                                         }
                                     }
@@ -249,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
                             progressDialog.dismiss();
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
-                                Toast.makeText(MainActivity.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(FormActivity.this, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
                                 if (jsonObject.getString("message").equals("Data Berhasil ditambahkan")) {
                                     ListActivity.ma.refresh_list();
                                     finish();
@@ -262,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             progressDialog.hide();
-                            Toast.makeText(MainActivity.this, "Gagal ditambahkan", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(FormActivity.this, "Gagal ditambahkan", Toast.LENGTH_SHORT).show();
                         }
                     }) {
                         protected Map<String, String> getParams() throws AuthFailureError {
@@ -280,8 +270,8 @@ public class MainActivity extends AppCompatActivity {
                             return params;
                         }
                     };
-                    RequestHandler.getInstance(MainActivity.this).addToRequestQueue(stringRequest);
-                    Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                    RequestHandler.getInstance(FormActivity.this).addToRequestQueue(stringRequest);
+                    Intent intent = new Intent(FormActivity.this, ListActivity.class);
                     startActivity(intent);
 
                 }

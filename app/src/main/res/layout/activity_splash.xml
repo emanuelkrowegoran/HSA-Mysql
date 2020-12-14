@@ -19,13 +19,13 @@
             android:layout_marginTop="60dp"
             android:src="@drawable/favicon" />
 
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="250dp"
-        android:layout_height="100dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="90dp"
-        android:src="@drawable/sew" />
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="250dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="90dp"
+            android:src="@drawable/sew" />
 
 
     </LinearLayout>
@@ -38,15 +38,15 @@
         android:orientation="vertical"
         android:background="@drawable/spaceullustration">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="220dp"
-        android:gravity="center_horizontal"
-        android:text="By: Hadigrup.com"
-        android:textColor="@color/black"
-        android:textSize="12dp" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="220dp"
+            android:gravity="center_horizontal"
+            android:text="By: Hadigrup.com"
+            android:textColor="@color/black"
+            android:textSize="12dp" />
 
     </LinearLayout>
 

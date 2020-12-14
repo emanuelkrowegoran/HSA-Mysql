@@ -62,7 +62,7 @@ public class ListActivity extends AppCompatActivity {
         int id = item.getItemId();
         if (id == R.id.add) {
 
-            Intent tes = new Intent(ListActivity.this, MainActivity.class);
+            Intent tes = new Intent(ListActivity.this, FormActivity.class);
             startActivity(tes);
         }
         return super.onOptionsItemSelected(item);
